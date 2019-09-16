@@ -29,9 +29,28 @@ public class EvaluationService {
 	 * @param phrase
 	 * @return
 	 */
-	public String acronym(String phrase) {
+	public String acronym(String phrase) {	
 		// TODO Write an implementation for this method declaration
-		return null;
+		String ans2,Uans;
+		String ca = "";
+		ca+=phrase.charAt(0);
+//	int ci=1;
+		for(int i=0; i<phrase.length(); i++ )
+		{
+			//c=phrase.charAt(i);
+			
+			if(phrase.charAt(i) ==' ' || phrase.charAt(i)== '-')
+			{
+				int ii=i+1;
+			 ca+=phrase.charAt(ii);
+			//ci++;
+			}
+				
+		};
+		
+		  Uans = ca.toUpperCase();
+		  //System.out.println(Uans);	
+		return Uans;
 	}
 
 	/**
@@ -50,6 +69,7 @@ public class EvaluationService {
 
 		public Triangle() {
 			super();
+			
 		}
 
 		public Triangle(double sideOne, double sideTwo, double sideThree) {
@@ -85,17 +105,29 @@ public class EvaluationService {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			boolean b=false;
+			if (sideOne==sideTwo && sideTwo==sideThree) {
+			b=true;
+			}
+			return b;
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
-			return false;
+		boolean b=false;
+		 if (sideOne ==sideTwo || sideTwo==sideThree || sideOne==sideThree) {
+			 b=true;
+		 }
+			 
+			return b;
 		}
 
 		public boolean isScalene() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			boolean b=false;
+			 if (sideOne !=sideTwo && sideTwo!=sideThree && sideOne!=sideThree) {
+				 b=true;
+			 }
+			return b;
 		}
 
 	}
@@ -116,7 +148,9 @@ public class EvaluationService {
 	 * @return
 	 */
 	public int getScrabbleScore(String string) {
+	
 		// TODO Write an implementation for this method declaration
+		
 		return 0;
 	}
 
@@ -153,7 +187,32 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+
+		
+		String nums="0123456789";
+		String tel2="";
+		String tel="";
+		
+		try {
+		for(int i=0; i<string.length(); i++ ) {
+			
+		//	if(string.charAt(i)>=0 && string.charAt(i)<=9) {
+			if(nums.contains(String.valueOf(string.charAt(i)))) {
+			tel+=string.charAt(i);	
+			
+			}
+			//tel2=tel;
+		}
+	
+		} catch(Exception e){
+			
+			System.out.println("Invalid number");
+		}
+		
+		
+		//System.out.println(tel);
+		return tel;
+		
 	}
 
 	/**
@@ -247,7 +306,36 @@ public class EvaluationService {
 	 */
 	public String toPigLatin(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String s = "A,E,I,O,U,a,e,i,o,u";
+		//int i = 00;
+	String s2="";
+	String ans="";
+	boolean case1=true;
+		for(int i =0; i<s.length(); i++) {
+			if(s.contains(string.valueOf(string.charAt(0)))){
+					while(case1) {	
+					case1=false;
+					s2+=string+"ay";	
+					ans=s2;	//	System.out.println(s2);
+					}				
+			}else {
+					for(int j =1; j<s.length(); j++) {
+						if(s.contains(string.valueOf(string.charAt(j)))){
+							while(case1) {	
+							case1=false;
+							s2+= string.substring(j, string.length())+string.subSequence(0, j)+""+"ay";	
+							System.out.println(s2);
+							ans=s2;
+							}
+						}
+					}
+				
+				}
+			
+		}		
+		//String ans=" ";
+		System.out.println(ans);
+		return ans;
 	}
 
 	/**
@@ -316,6 +404,7 @@ public class EvaluationService {
 
 		public RotationalCipher(int key) {
 			super();
+		
 			this.key = key;
 		}
 
