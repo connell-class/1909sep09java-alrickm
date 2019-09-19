@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -355,7 +356,26 @@ public class EvaluationService {
 	 */
 	public boolean isArmstrongNumber(int input) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		int ans2;
+		int ans3=0;
+		int ans;
+		int inputs=input;
+				//int input=9474;
+				String s=Integer.toString(inputs);
+				
+				int sl=s.length();
+				for(int i=sl;i>0;i--) {
+					System.out.println("in " + inputs);
+				 ans= input%10;	
+					ans2=(int)Math.pow(ans, sl);
+					inputs=inputs/10;
+					
+				
+				ans3+=ans2;
+				System.out.println("out " + ans3);
+				}
+		
+		return (input==ans3);
 	}
 
 	/**
@@ -513,7 +533,7 @@ public class EvaluationService {
 	 * gramma, "every letter") is a sentence using every letter of the alphabet at
 	 * least once. The best known English pangram is:
 	 * 
-	 * The quick brown fox jumps over the lazy dog.
+	 fdk The quick brown fox jumps over the lazy dog.
 	 * 
 	 * The alphabet used consists of ASCII letters a to z, inclusive, and is case
 	 * insensitive. Input will not contain non-ASCII symbols.
