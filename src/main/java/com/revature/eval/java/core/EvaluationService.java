@@ -227,6 +227,8 @@ public class EvaluationService {
 	 */
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
+		StringBuilder s= new StringBuilder(string);
+		s.
 		return null;
 	}
 
@@ -390,7 +392,22 @@ public class EvaluationService {
 	 */
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		
+	        long ln = l;
+	        List<Long> pf = new ArrayList<Long>();
+	        for (long i = 2; i <= ln / i; i++) {
+	            while (ln % i == 0) {
+	                pf.add(i);
+	                ln /= i;
+	            }
+	        }
+	        if (ln > 1) {
+	            pf.add(ln);
+	        }
+	        return pf;
+	    
+		
+		
 	}
 
 	/**
@@ -449,7 +466,25 @@ public class EvaluationService {
 	 */
 	public int calculateNthPrime(int i) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		int val=0;
+		int counter=0;
+		int j;
+	    
+	    while (counter < i){
+	      val+=1;
+	      for (j = 2; j <= val; j++){
+
+	        if (val % j == 0) {
+	          break;
+	        }
+	      }
+
+	      if ( j == val){
+	        counter+=1;
+	      }
+	    }
+
+		return val;
 	}
 
 	/**
@@ -498,6 +533,7 @@ public class EvaluationService {
 		public static String decode(String string) {
 			// TODO Write an implementation for this method declaration
 			return null;
+
 		}
 	}
 
@@ -525,7 +561,61 @@ public class EvaluationService {
 	 */
 	public boolean isValidIsbn(String string) {
 		// TODO Write an implementation for this method declaration
-		return false;
+	//	String nums="0123456789x";
+	    int jj=11;
+	    int result=0;
+	    
+		
+		ArrayList<Integer> list = new ArrayList<>(); 
+		for(int i=0; i<string.length(); i++ ) {
+			
+		//	if(string.charAt(i)>=0 && string.charAt(i)<=9) {
+			//if(nums.contains(String.valueOf(string.charAt(i)))) {
+				if(string.charAt(i)=='0') {
+				list.add(0);
+			}			if(string.charAt(i)=='1') {
+				list.add(1);
+			}			if(string.charAt(i)=='2') {
+				list.add(2);
+			}			if(string.charAt(i)=='3') {
+				list.add(3);
+			}			if(string.charAt(i)=='4') {
+				list.add(4);
+			}			if(string.charAt(i)=='5') {
+				list.add(5);
+			}			if(string.charAt(i)=='6') {
+				list.add(6);
+			}			if(string.charAt(i)=='7') {
+				list.add(7);
+			}			if(string.charAt(i)=='8') {
+				list.add(8);
+			}			if(string.charAt(i)=='9') {
+				list.add(9);
+			}
+						if(string.charAt(i)=='x') {
+				list.add(10);
+			}
+						if(string.charAt(i)=='X') {
+							list.add(10);
+						}
+	
+								
+			}
+//array list with values.
+		//}
+	System.out.println(list.toString());
+	for(int j =0; j<10;j++) {
+		jj--;
+		System.out.println(jj+":"+j);	
+		result+=list.get(j)*jj;
+				
+	
+		
+	}	
+		
+	
+		
+		return (result%11==0);
 	}
 
 	/**
