@@ -2,8 +2,10 @@ package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class EvaluationService {
 
@@ -272,7 +274,25 @@ public class EvaluationService {
 
 		public int indexOf(T t) {
 			// TODO Write an implementation for this method declaration
-			return 0;
+	          
+	           int min=0;
+	           int sl = sortedList.size();
+	           int max=sl-1;
+	           int m=0;
+	           T l;
+	           for(int i =0;i<sl;i++) {
+	               m = (min+max)/2;
+	               l = sortedList.get(m);
+	               if(l.equals(t)) {
+	                   break;
+	               }else if ((int)l < (int)t) {
+	                   min = (int)m+1;
+	               }else if ((int)l > (int)t) {
+	                   max = (int)m-1;
+	               }
+	           }
+	           return m-0;
+			
 		}
 
 		public BinarySearch(List<T> sortedList) {
@@ -562,15 +582,14 @@ public class EvaluationService {
 	public boolean isValidIsbn(String string) {
 		// TODO Write an implementation for this method declaration
 	//	String nums="0123456789x";
-	    int jj=11;
+	   int jj=11;
 	    int result=0;
 	    
 		
 		ArrayList<Integer> list = new ArrayList<>(); 
 		for(int i=0; i<string.length(); i++ ) {
 			
-		//	if(string.charAt(i)>=0 && string.charAt(i)<=9) {
-			//if(nums.contains(String.valueOf(string.charAt(i)))) {
+		
 				if(string.charAt(i)=='0') {
 				list.add(0);
 			}			if(string.charAt(i)=='1') {
@@ -618,6 +637,7 @@ public class EvaluationService {
 		return (result%11==0);
 	}
 
+
 	/**
 	 * 16. Determine if a sentence is a pangram. A pangram (Greek: παν γράμμα, pan
 	 * gramma, "every letter") is a sentence using every letter of the alphabet at
@@ -664,7 +684,26 @@ public class EvaluationService {
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		int temp=0;
+		int temp2=0;
+		Set<Integer> s= new HashSet<>();
+		int sl=set.length;
+		for(int j =0; j<sl; j++) {
+			int counter =1;
+			temp=0;
+				while((set[j]*counter)<i) {
+					temp=set[j]*counter;
+					s.add(temp);
+					counter++;
+				}
+			 
+		}
+		for(int v: s) {
+				 temp2=temp2+v;
+				}
+		System.out.println(temp2);
+
+		return temp2;
 	}
 
 	/**
@@ -705,7 +744,62 @@ public class EvaluationService {
 	 */
 	public boolean isLuhnValid(String string) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		 int result2=0;
+		    int result=0;
+		    int jj;
+		    
+			//String string ="8569 2478 0383 3437";
+			ArrayList<Integer> list2 = new ArrayList<>(); 
+			
+			for(int i=0; i<string.length(); i++ ) {
+					
+					if(string.charAt(i)=='0') {
+					list2.add(0);
+				}			if(string.charAt(i)=='1') {
+					list2.add(1);
+				}			if(string.charAt(i)=='2') {
+					list2.add(2);
+				}			if(string.charAt(i)=='3') {
+					list2.add(3);
+				}			if(string.charAt(i)=='4') {
+					list2.add(4);
+				}			if(string.charAt(i)=='5') {
+					list2.add(5);
+				}			if(string.charAt(i)=='6') {
+					list2.add(6);
+				}			if(string.charAt(i)=='7') {
+					list2.add(7);
+				}			if(string.charAt(i)=='8') {
+					list2.add(8);
+				}			if(string.charAt(i)=='9') {
+					list2.add(9);
+				}
+				
+										
+				}
+/**
+ * 
+ */
+			 
+
+			
+			jj=list2.size()+1;
+			for(int j =list2.size()-2; j>=0;j-=2) {
+				
+				jj-=2;
+			
+				result=list2.get(j)*2;
+					if(result>9) {
+						result2+=result-9;
+					}else {
+						result2+=result;
+					}
+				result2+=list2.get(jj);
+				
+			}	
+			result2+=list2.get(0);
+					System.out.print(result2);
+		return (result2%10==0);
 	}
 
 	/**
@@ -737,7 +831,87 @@ public class EvaluationService {
 	 */
 	public int solveWordProblem(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		char gc;
+		int scounter=0;
+		int v1=0;
+		int v2=0;
+		String ns1 ="";
+		String ns2="";
+		String os3="";
+		String string2 = string.replaceAll("[?]","");
+		int nfi =0;
+		int nbi=0;
+		int obi=0;
+		int n2fi=0;
+		int n2bi=0;
+		int ofi=0;
+		int result=0;
+		int sl=string2.length();
+		for(int i = 0; i<sl;i++) 
+		{
+			
+		gc=string2.charAt(i);
+		if(gc==' '){
+			
+		scounter++;	
+			if(scounter==2) {
+				
+			nfi=i+1;
+			nbi=i+3;
+			ns1=string2.substring(nfi,nbi);
+			}
+			if(scounter==3) {
+				ofi=i+1;
+					
+			}
+			
+			if(scounter==4) {
+				
+				obi=i;
+				os3=string2.substring(ofi, obi);	
+				
+				
+			}
+		if(scounter==5) {
+			n2bi=i-1;
+			n2fi=i+1;
+			ns2=string2.substring(n2fi);
+			
+			
+				}
+			
+		}//if statement ends here
+			
+		}//for loop ends here.
+		//begins here
+				if(os3.contentEquals("multiplied") ) {
+					 v1= Integer.parseInt(ns1);
+					 v2=Integer.parseInt(ns2);
+					 
+							result=v1*v2;
+							System.out.println("Multi "+result);
+								}
+				if(os3.equalsIgnoreCase("plus")) {
+					 v1= Integer.parseInt(ns1);
+					 v2=Integer.parseInt(ns2);
+							result=v1+v2;
+								}
+				if(os3.equalsIgnoreCase("minus")) {
+					 v1= Integer.parseInt(ns1);
+					 v2=Integer.parseInt(ns2);
+							result=v1-v2;
+								}
+				if(os3.equals("divided")) {
+					result=0;
+					System.out.println("last first gate +"+ns1);
+					System.out.println("last gate +"+ns2);
+					System.out.println("last gate +");
+					 v1= Integer.parseInt(ns1);
+					 v2=Integer.parseInt(ns2);
+							result=v1/v2;
+								}
+			
+		
+		return result;
 	}
-
 }
