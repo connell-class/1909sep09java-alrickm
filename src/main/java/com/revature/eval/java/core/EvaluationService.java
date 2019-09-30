@@ -229,8 +229,8 @@ public class EvaluationService {
 	 */
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
-		StringBuilder s= new StringBuilder(string);
-		s.
+		
+		
 		return null;
 	}
 
@@ -330,20 +330,20 @@ public class EvaluationService {
 	public String toPigLatin(String string) {
 		// TODO Write an implementation for this method declaration
 		String s = "A,E,I,O,U,a,e,i,o,u";
-		//int i = 00;
+		
 	String s2="";
 	String ans="";
 	boolean case1=true;
 		for(int i =0; i<s.length(); i++) {
-			if(s.contains(string.valueOf(string.charAt(0)))){
+			if(s.contains(String.valueOf(string.charAt(0)))){
 					while(case1) {	
 					case1=false;
 					s2+=string+"ay";	
-					ans=s2;	//	System.out.println(s2);
+					ans=s2;
 					}				
 			}else {
 					for(int j =1; j<s.length(); j++) {
-						if(s.contains(string.valueOf(string.charAt(j)))){
+						if(s.contains(String.valueOf(string.charAt(j)))){
 							while(case1) {	
 							case1=false;
 							s2+= string.substring(j, string.length())+string.subSequence(0, j)+""+"ay";	
@@ -356,8 +356,8 @@ public class EvaluationService {
 				}
 			
 		}		
-		//String ans=" ";
-		System.out.println(ans);
+		
+		
 		return ans;
 	}
 
@@ -581,12 +581,11 @@ public class EvaluationService {
 	 */
 	public boolean isValidIsbn(String string) {
 		// TODO Write an implementation for this method declaration
-	//	String nums="0123456789x";
+	
 	   int jj=11;
 	    int result=0;
 	    
-		
-		ArrayList<Integer> list = new ArrayList<>(); 
+				ArrayList<Integer> list = new ArrayList<>(); 
 		for(int i=0; i<string.length(); i++ ) {
 			
 		
@@ -620,8 +619,7 @@ public class EvaluationService {
 	
 								
 			}
-//array list with values.
-		//}
+
 	System.out.println(list.toString());
 	for(int j =0; j<10;j++) {
 		jj--;
@@ -653,7 +651,29 @@ public class EvaluationService {
 	 */
 	public boolean isPangram(String string) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		String s = string;
+	      boolean[] letter = new boolean[26]; 
+	      int j = 0;
+	      int test = 1;
+	    boolean result= false;
+	      for (int i = 0; i < s.length(); i++) {
+	         if ( s.charAt(i) >= 'A' && s.charAt(i) <= 'Z') {
+	            j = s.charAt(i) - 'A'; 
+	         }else if( s.charAt(i) >= 'a' &&  s.charAt(i) <= 'z') {
+	            j = s.charAt(i) - 'a'; 
+	         }
+	         letter[j] = true; 
+	      }
+	      for (int i = 0; i <= 25; i++) {
+	         if (letter[i] == false)
+	            test = 0;
+	      }
+	      
+	      if (test == 1) {
+	         result = true;
+	      }
+	      
+	         		return result;
 	}
 
 	/**
@@ -873,7 +893,7 @@ public class EvaluationService {
 				
 			}
 		if(scounter==5) {
-			n2bi=i-1;
+			n2bi=i+4;
 			n2fi=i+1;
 			ns2=string2.substring(n2fi);
 			
